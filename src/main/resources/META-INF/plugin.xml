@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>org.ajawhar.test-plugin</id>
+    <name>ajawhar</name>
+    <vendor email="support@alaajawhar.com" url="https://www.alaajawhar.com">ajawhar</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin.<br>
+    <em>most HTML tags may be </em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action
+                id="StackOverflow.Search.Editor"
+                class="com.ajawhar.actions.SearchAction"
+                text="Search on Stack Overflow"
+                description="Search on Stack Overflow">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+
+<!--        <group>-->
+<!--            <add-to-group group-id="MainMenu" anchor="last"/>-->
+<!--            <action class="com.ajawhar.test.actions.SearchAction" id="searchAction" text="it woks"/>-->
+<!--        </group>-->
+    </actions>
+</idea-plugin>
