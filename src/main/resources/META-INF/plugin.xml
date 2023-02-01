@@ -16,14 +16,9 @@
         <action
                 id="StackOverflow.Search.Editor"
                 class="com.ajawhar.actions.SearchAction"
-                text="Search on Stack Overflow"
-                description="Search on Stack Overflow">
+                text="Generate DAO"
+                description="Generate DAO classes based on table name">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
-
-<!--        <group>-->
-<!--            <add-to-group group-id="MainMenu" anchor="last"/>-->
-<!--            <action class="com.ajawhar.test.actions.SearchAction" id="searchAction" text="it woks"/>-->
-<!--        </group>-->
     </actions>
 </idea-plugin>

@@ -8,6 +8,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,18 +21,32 @@ public class SearchAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        Optional<PsiFile> psiFile = Optional.ofNullable(e.getData(LangDataKeys.PSI_FILE));
-        String languageTag = psiFile
-                .map(PsiFile::getLanguage)
-                .map(Language::getDisplayName)
-                .map(String::toLowerCase)
-                .map(lang -> "[" + lang + "]")
-                .orElse("");
+        Messages.showInputDialog("message", "title", Messages.getQuestionIcon());
 
-        Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
-        CaretModel caretModel = editor.getCaretModel();
-        String selectedText = caretModel.getCurrentCaret().getSelectedText();
+        SqlGeneratorDialogWrapper myIdeaDataDialogWrapper = new SqlGeneratorDialogWrapper(null);
+        if (myIdeaDataDialogWrapper.showAndGet()) {
+            myIdeaDataDialogWrapper.close(23);
+        }
 
-        BrowserUtil.browse("https://stackoverflow.com/search?q=" + languageTag + selectedText);
+
+//        Optional<PsiFile> psiFile = Optional.ofNullable(e.getData(LangDataKeys.PSI_FILE));
+//        String languageTag = psiFile
+//                .map(PsiFile::getLanguage)
+//                .map(Language::getDisplayName)
+//                .map(String::toLowerCase)
+//                .map(lang -> "[" + lang + "]")
+//                .orElse("");
+//
+//        System.out.println("languageTag: " + languageTag);
+//        Messages.showMessageDialog(languageTag, "languageTag", Messages.getErrorIcon());
+//
+//        String txt= Messages.showInputDialog(project, "What is your name?",
+//                "Input your name", Messages.getQuestionIcon());
+//
+//        Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
+//        CaretModel caretModel = editor.getCaretModel();
+//        String selectedText = caretModel.getCurrentCaret().getSelectedText();
+//
+//        BrowserUtil.browse("https://stackoverflow.com/search?q=" + languageTag + selectedText);
     }
 }
